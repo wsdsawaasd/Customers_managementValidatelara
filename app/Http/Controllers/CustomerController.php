@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Customer;
+use App\Http\Requests\FormCreate;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +35,7 @@ class CustomerController extends Controller{
      *
      * @return Response
      */
-    public function store(Request $request){
+    public function store(FormCreate $request){
         $customer = new Customer();
         $customer->name     = $request->input('name');
         $customer->email    = $request->input('email');
@@ -64,7 +65,7 @@ class CustomerController extends Controller{
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id){
+    public function update(FormCreate $request, $id){
         $customer = Customer::findOrFail($id);
         $customer->name     = $request->input('name');
         $customer->email    = $request->input('email');

@@ -8,19 +8,25 @@
                 <h1>Thêm mới khách hàng</h1>
             </div>
             <div class="col-12">
+                @if(isset($errors))
+                        @foreach($errors->all() as $error)
+                            <p style="color:red">{{$error}}</p>
+                        @endforeach
+
+                @endif
                 <form method="post" action="{{ route('customers.store') }}">
                     @csrf
                     <div class="form-group">
                         <label>Tên khách hàng</label>
-                        <input type="text" class="form-control" name="name"  placeholder="Enter name" required>
+                        <input type="text" class="form-control" name="name" placeholder="Enter name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+                        <input type="email" class="form-control" name="email" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ngày sinh</label>
-                        <input type="date" class="form-control" name="dob" required>
+                        <input type="date" class="form-control" name="dob">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
